@@ -4,7 +4,16 @@ const LandRoutes = require('./routes/LandRoutes.js');
 const init = async () => {
     const server = Hapi.server({
         port: 1234,
-        host: 'localhost'
+        host: 'localhost',
+        routes: {
+            cors: {
+                origin: ['*'],
+                // origin: ['http://localhost:3000'],
+                additionalHeaders: ['Accept', 'Content-Type', 'Authorization'],
+                additionalExposedHeaders: ['Authorization'],
+                credentials: true
+            }
+        }
     });
 
     server.route(LandRoutes);

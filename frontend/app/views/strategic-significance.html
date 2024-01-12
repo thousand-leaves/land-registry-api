@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/check-answers" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+      name: "strategic-significance",
+      value: data['strategic-significance'],
+      fieldset: {
+      legend: {
+      text: "How would you describe the strategic significance of the habitat?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "formally identified",
+      text: "Formally identified as a priority habitat in a national or local biodiversity action plan"
+      },
+      {
+      value: "location desirable",
+      text: "Location desirable for potential strategic significance"
+      },
+      {
+      value: "not identified",
+      text: "Not identified"
+      },
+      {
+      value: "unknown",
+      text: "Unknown"
+      }
+      ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

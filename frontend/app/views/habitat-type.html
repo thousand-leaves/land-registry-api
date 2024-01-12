@@ -1,0 +1,86 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Question page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/area" method="post">
+
+      {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+      {{ govukRadios({
+      name: "habitat-type",
+      value: data['habitat-type'],
+      fieldset: {
+      legend: {
+      text: "What is the habitat type?",
+      isPageHeading: true,
+      classes: "govuk-fieldset__legend--l"
+      }
+      },
+      items: [
+      {
+      value: "cereal crops",
+      text: "Cereal crops"
+      },
+      {
+      value: "root crops",
+      text: "Root crops"
+      },
+      {
+      value: "meadow",
+      text: "Meadow"
+      },
+      {
+      value: "pasture",
+      text: "Pasture"
+      },
+      {
+      value: "heathland",
+      text: "Heathland"
+      },
+      {
+      value: "bog",
+      text: "Bog"
+      },
+      {
+      value: "fen",
+      text: "Fen"
+      },
+      {
+      value: "reedbed",
+      text: "Reedbed"
+      },
+      {
+      value: "modified grassland",
+      text: "Modified grassland"
+      },
+      {
+      value: "other",
+      text: "Other"
+      }
+      ]
+      }) }}
+
+      {{ govukButton({
+      text: "Continue"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
