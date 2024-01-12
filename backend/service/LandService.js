@@ -20,8 +20,8 @@ const LandService = {
 
     async createLand(land) {
         try {
-            const { land_id, broad_habitat, habitat_type, habitat_area, distinctiveness, habitat_condition, strategic_significance } = land;
-            return await Land.create({ land_id, broad_habitat, habitat_type, habitat_area, distinctiveness, habitat_condition, strategic_significance });  
+            const { broad_habitat, habitat_type, habitat_area, distinctiveness, habitat_condition, strategic_significance } = land;
+            return await Land.create({ broad_habitat, habitat_type, habitat_area, distinctiveness, habitat_condition, strategic_significance });  
         } catch (err) {
             throw { message: err.message, status: 500 };
         }

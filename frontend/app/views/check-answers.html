@@ -1,207 +1,190 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
+  Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
 {% endblock %}
 
 {% block content %}
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
 
-    <h1 class="govuk-heading-xl">
-      Check your answers before sending your application
-    </h1>
+      <h1 class="govuk-heading-xl">
+        Check your answers before sending your application
+      </h1>
 
-    <div id="land-id">{{ data['land-id'] }}</div>
-    <div id="broad-habitat">{{ data['broad-habitat'] }}</div>
-    <div id="habitat-type">{{ data['habitat-type'] }}</div>
-    <div id="area">{{ data['area'] }}</div>
-    <div id="distinctiveness">{{ data['distinctiveness'] }}</div>
-    <div id="condition">{{ data['condition'] }}</div>
-    <div id="strategic-significance">{{ data['strategic-significance'] }}</div>
+      <div id="broad-habitat">{{ data['broad-habitat'] }}</div>
+      <div id="habitat-type">{{ data['habitat-type'] }}</div>
+      <div id="area">{{ data['area'] }}</div>
+      <div id="distinctiveness">{{ data['distinctiveness'] }}</div>
+      <div id="condition">{{ data['condition'] }}</div>
+      <div id="strategic-significance">{{ data['strategic-significance'] }}</div>
 
-
-    {{ govukSummaryList({
-    rows: [
-    {
-    key: {
-    text: "What is the broad habitat?"
-    },
-    value: {
-    text: data['broad-habitat']
-    },
-    actions: {
-    items: [
-    {
-    href: "/broad-habitat",
-    text: "Change",
-    visuallyHiddenText: "What is the broad habitat?"
-    }
-    ]
-    }
-    }
-    ,
-    {
-    key: {
-    text: "What is the habitat type?"
-    },
-    value: {
-    text: data['habitat-type']
-    },
-    actions: {
-    items: [
-    {
-    href: "/habitat-type",
-    text: "Change",
-    visuallyHiddenText: "What is the habitat type?"
-    }
-    ]
-    }
-    }
-    ,
-    {
-    key: {
-    text: "What is the area (hectares) of the habitat?"
-    },
-    value: {
-    text: data['area']
-    },
-    actions: {
-    items: [
-    {
-    href: "/area",
-    text: "Change",
-    visuallyHiddenText: "What is the area of the habitat?"
-    }
-    ]
-    }
-    }
-    ,
-    {
-    key: {
-    text: "How would you describe the distinctiveness of the habitat?"
-    },
-    value: {
-    text: data['distinctiveness']
-    },
-    actions: {
-    items: [
-    {
-    href: "/distinctiveness",
-    text: "Change",
-    visuallyHiddenText: "What is the distinctiveness of the habitat?"
-    }
-    ]
-    }
-    }
-    ,
-    {
-    key: {
-    text: "How would you describe the condition of the habitat?"
-    },
-    value: {
-    text: data['condition']
-    },
-    actions: {
-    items: [
-    {
-    href: "/condition",
-    text: "Change",
-    visuallyHiddenText: "How would you describe the condition of the habitat?"
-    }
-    ]
-    }
-    }
-    ,
-    {
-    key: {
-    text: " How would you describe the strategic significance of the habitat?"
-    },
-    value: {
-    text: data['strategic-significance']
-    },
-    actions: {
-    items: [
-    {
-    href: "/strategic-significance",
-    text: "Change",
-    visuallyHiddenText: "How would you describe the strategic significance of the habitat?"
-    }
-    ]
-    }
-    }
-    ]
-    }) }}
-
-    <h2 class="govuk-heading-m">
-      Now send your application
-    </h2>
-
-    <p>
-      By submitting this application you are confirming that, to the best of your knowledge, the details you are
-      providing are correct.
-    </p>
-
-    <form action="/confirmation" method="post" novalidate onsubmit="return createLandEntry();">
-
-      {{ govukButton({
-      text: "Accept and send"
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "What is the broad habitat?"
+            },
+            value: {
+              text: data['broad-habitat']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/broad-habitat",
+                  text: "Change",
+                  visuallyHiddenText: "What is the broad habitat?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is the habitat type?"
+            },
+            value: {
+              text: data['habitat-type']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/habitat-type",
+                  text: "Change",
+                  visuallyHiddenText: "What is the habitat type?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "What is the area (hectares) of the habitat?"
+            },
+            value: {
+              text: data['area']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/area",
+                  text: "Change",
+                  visuallyHiddenText: "What is the area of the habitat?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you describe the distinctiveness of the habitat?"
+            },
+            value: {
+              text: data['distinctiveness']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/distinctiveness",
+                  text: "Change",
+                  visuallyHiddenText: "What is the distinctiveness of the habitat?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "How would you describe the condition of the habitat?"
+            },
+            value: {
+              text: data['condition']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/condition",
+                  text: "Change",
+                  visuallyHiddenText: "How would you describe the condition of the habitat?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: " How would you describe the strategic significance of the habitat?"
+            },
+            value: {
+              text: data['strategic-significance']
+            },
+            actions: {
+              items: [
+                {
+                  href: "/strategic-significance",
+                  text: "Change",
+                  visuallyHiddenText: "How would you describe the strategic significance of the habitat?"
+                }
+              ]
+            }
+          }
+        ]
       }) }}
 
-    </form>
+      <h2 class="govuk-heading-m">
+        Now send your application
+      </h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-      // Function to handle the creation of a new land entry
-      function createLandEntry() {
-        const getElementText = (elementId) => {
-          const element = document.getElementById(elementId);
-          return element ? element.innerText : null;
-        };
+      <p>
+        By submitting this application you are confirming that, to the best of your knowledge, the details you are
+        providing are correct.
+      </p>
+
+      <form action="/confirmation" method="post" novalidate onsubmit="return createLandEntry();">
+        {{ govukButton({
+          text: "Accept and send"
+        }) }}
+      </form>
+
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      <script>
+        function createLandEntry() {
+          const getElementText = (elementId) => {
+            const element = document.getElementById(elementId);
+            return element ? element.innerText : null;
+          };
+      
+          const newLandEntry = {
+            "broad_habitat": getElementText('broad-habitat'),
+            "habitat_type": getElementText('habitat-type'),
+            "habitat_area": getElementText('area'),
+            "distinctiveness": getElementText('distinctiveness'),
+            "habitat_condition": getElementText('condition'),
+            "strategic_significance": getElementText('strategic-significance')
+          };
+      
+          console.log('New Land Entry Payload:', newLandEntry);
     
-        const newLandEntry = {
-          "land_id": 18,
-          "broad_habitat": getElementText('broad-habitat'),
-          "habitat_type": getElementText('habitat-type'),
-          "habitat_area": getElementText('area'),
-          "distinctiveness": getElementText('distinctiveness'),
-          "habitat_condition": getElementText('condition'),
-          "strategic_significance": getElementText('strategic-significance')
-        };
-    
-        // Log the newLandEntry object to the console
-        console.log('New Land Entry Payload:', newLandEntry);
-    
-        // Check if any of the values are null
-        Object.keys(newLandEntry).forEach(key => {
-          if (newLandEntry[key] === null) {
-            console.error(`Value for ${key} is null or element not found.`);
-          }
-        });
-    
-        // Make a POST request to create a new land entry
-        axios.post('http://localhost:1234/land', newLandEntry)
-          .then(function (response) {
-            // Handle the successful response
-            console.log('New land entry created:', response.data);
-          })
-          .catch(function (error) {
-            // Handle errors
-            console.error('Error creating new land entry:', error);
+          Object.keys(newLandEntry).forEach(key => {
+            if (newLandEntry[key] === null) {
+              console.error(`Value for ${key} is null or element not found.`);
+            }
           });
+      
+          axios.post('http://localhost:1234/land', newLandEntry)
+            .then(function (response) {
+              console.log('New land entry created:', response.data);
+            })
+            .catch(function (error) {
+              console.error('Error creating new land entry:', error);
+            });
+      
+          return false;
+        }
+      </script>
     
-        // Prevent the default form submission behavior
-        return false;
-      }
-    </script>
-    
+    </div>
   </div>
-</div>
 {% endblock %}
